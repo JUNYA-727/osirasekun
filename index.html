@@ -6,6 +6,7 @@
   <title>おしらせくん — 思考をそのままスケジュールに</title>
   <meta name="description" content="自然な言葉でタスクを登録。面倒な日付ピッカーは不要。思いついた瞬間にスケジュールに変換できるiOSアプリ。">
   <meta name="theme-color" content="#000000">
+  <meta name="format-detection" content="telephone=no,date=no,address=no">
   <link rel="icon" type="image/png" href="Icon/logo_normal.png">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -43,8 +44,8 @@
     /* ---------- UTILITY ---------- */
     .reveal{
       opacity:0;
-      transform:translateY(32px);
-      transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+      transform:translateY(20px);
+      transition:opacity .7s cubic-bezier(.25,1,.5,1),transform .7s cubic-bezier(.25,1,.5,1);
     }
     .reveal.visible{opacity:1;transform:none}
     .container{max-width:1080px;margin:0 auto;padding:0 24px}
@@ -501,43 +502,43 @@
     <p class="section-eyebrow reveal">Features</p>
     <h2 class="section-heading reveal stagger-1">主な機能</h2>
     <p class="section-lead reveal stagger-2">めんどくさいをなくして、やりたいことだけに集中。</p>
-    <div class="feat-grid">
-      <div class="feat-card reveal stagger-1">
+    <div class="feat-grid reveal stagger-3">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F4AC;</div>
         <h3>自然言語でかんたん入力</h3>
         <p>日本語でも英語でもOK。「明後日の午後3時に歯医者」「next Friday 9am standup」みたいに、いつもの言葉でそのまま。</p>
       </div>
-      <div class="feat-card reveal stagger-2">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F522;</div>
         <h3>数字だけでサクッと登録</h3>
         <p>「0315 1400 歯医者」みたいに数字で一発。範囲指定も「03150900 03151700 会議」で。</p>
       </div>
-      <div class="feat-card reveal stagger-3">
+      <div class="feat-card">
         <div class="feat-emoji">&#x23F1;</div>
         <h3>「〜分後」でさっと登録</h3>
         <p>「30分後 薬飲む」「2時間後 ミーティング」。今からの時間でもそのまま登録できる。</p>
       </div>
-      <div class="feat-card reveal stagger-4">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F4C5;</div>
         <h3>4つのカレンダービュー</h3>
         <p>リスト・日・週・月をワンタップで切替。Googleカレンダーみたいな画面で予定がすぐわかる。</p>
       </div>
-      <div class="feat-card reveal stagger-5">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F514;</div>
         <h3>通知でうっかり防止</h3>
         <p>タスクごとにリマインダーをセット。16種類の通知メッセージから選べる。終日タスクにも対応。</p>
       </div>
-      <div class="feat-card reveal stagger-6">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F504;</div>
         <h3>繰り返し＆習慣トラッキング</h3>
         <p>毎日・毎週・毎月の繰り返しに対応。連続日数や達成回数もチェックできる。</p>
       </div>
-      <div class="feat-card reveal stagger-7">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F512;</div>
         <h3>完全オフライン対応</h3>
         <p>処理は全部端末の中で完結。データが外に出ることは一切なし。ネットなしでも使える。</p>
       </div>
-      <div class="feat-card reveal stagger-8">
+      <div class="feat-card">
         <div class="feat-emoji">&#x1F3A8;</div>
         <h3>自分好みにカスタマイズ</h3>
         <p>「朝」「夜」の時刻変更、自分だけの辞書、8種類のアイコン、ライト/ダーク/システム連動テーマ。</p>
@@ -552,33 +553,33 @@
     <p class="section-eyebrow reveal">Input Examples</p>
     <h2 class="section-heading reveal stagger-1">入力例</h2>
     <p class="section-lead reveal stagger-2">こう打つだけ。あとはおしらせくんがやってくれる。</p>
-    <div class="ex-list">
-      <div class="ex-row reveal stagger-1">
+    <div class="ex-list reveal stagger-3">
+      <div class="ex-row">
         <span class="ex-in">明日の夜ミーティング</span>
         <span class="ex-arrow">&rarr;</span>
         <span class="ex-out">明日 20:00</span>
       </div>
-      <div class="ex-row reveal stagger-2">
+      <div class="ex-row">
         <span class="ex-in">30分後 薬飲む</span>
         <span class="ex-arrow">&rarr;</span>
         <span class="ex-out">30分後</span>
       </div>
-      <div class="ex-row reveal stagger-3">
+      <div class="ex-row">
         <span class="ex-in">来週月曜 朝 ジョギング</span>
         <span class="ex-arrow">&rarr;</span>
         <span class="ex-out">来週月曜 9:00</span>
       </div>
-      <div class="ex-row reveal stagger-4">
+      <div class="ex-row">
         <span class="ex-in">9時から17時まで仕事</span>
         <span class="ex-arrow">&rarr;</span>
         <span class="ex-out">9:00 - 17:00</span>
       </div>
-      <div class="ex-row reveal stagger-5">
+      <div class="ex-row">
         <span class="ex-in">20260315 1400 歯医者</span>
         <span class="ex-arrow">&rarr;</span>
         <span class="ex-out">2026/3/15 14:00</span>
       </div>
-      <div class="ex-row reveal stagger-6">
+      <div class="ex-row">
         <span class="ex-in">0401 0405 旅行</span>
         <span class="ex-arrow">&rarr;</span>
         <span class="ex-out">4/1 - 4/5 終日</span>
