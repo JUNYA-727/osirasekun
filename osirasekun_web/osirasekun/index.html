@@ -94,6 +94,10 @@
     .reveal.visible{opacity:1;transform:none}
     .container{max-width:980px;margin:0 auto;padding:0 24px}
 
+    /* Responsive line breaks */
+    .sp-only{display:none}
+    .sp-hide{display:inline}
+
     /* ---------- NAV ---------- */
     .nav{
       position:fixed;top:0;left:0;right:0;z-index:1000;
@@ -281,12 +285,16 @@
     }
 
     .hero-desc{
-      font-size:clamp(.93rem,1.8vw,1.08rem);
+      font-size:1.08rem;
       color:var(--gray-600);
-      max-width:480px;margin:0 auto 44px;
+      max-width:none;margin:0 auto 44px;
       line-height:1.65;
       font-weight:400;
     }
+    .hero-desc-line{
+      white-space:nowrap;
+    }
+    .hero-desc--sp{display:none}
     .hero-cta{
       display:inline-block;
       transition:transform .3s cubic-bezier(.16,1,.3,1);
@@ -523,11 +531,16 @@
     }
 
     @media(max-width:768px){
+      .sp-only{display:inline}
+      .sp-hide{display:none}
+
       .nav-links{display:none}
       .nav-toggle{display:block}
 
       .hero{padding:130px 16px 72px}
-      .hero-desc{padding:0 4px}
+      .hero-desc--pc{display:none}
+      .hero-desc--sp{display:block}
+      .hero-desc{font-size:.93rem;padding:0 8px}
       .section{padding:80px 0}
       .container{padding:0 16px}
 
@@ -641,7 +654,8 @@
     </div>
   </div>
 
-  <p class="hero-desc reveal stagger-3">「明日の9時にミーティング」って打つだけで、<br>日時もタイトルも自動で読み取ってタスク登録。<br>日付・時間をポチポチ選ぶ手間はもういらない。</p>
+  <p class="hero-desc hero-desc--pc reveal stagger-3"><span class="hero-desc-line">「明日の9時にミーティング」って打つだけで、日時もタイトルも自動で読み取ってタスク登録。</span><br><span class="hero-desc-line">日付・時間をポチポチ選ぶ手間はもういらない。</span></p>
+  <p class="hero-desc hero-desc--sp reveal stagger-3">「明日の9時にミーティング」って打つだけで、<br>日時もタイトルも自動で読み取ってタスク登録。<br>日付・時間をポチポチ選ぶ手間はもういらない。</p>
 
   <div class="reveal stagger-4">
     <a href="#" class="hero-cta">
@@ -655,7 +669,7 @@
   <div class="container">
     <p class="section-eyebrow reveal">Screenshots</p>
     <h2 class="section-heading reveal stagger-1">アプリの画面</h2>
-    <p class="section-lead reveal stagger-2">リスト・日・週・月の4つのビューで、予定をぱっと確認。</p>
+    <p class="section-lead reveal stagger-2">リスト・日・週・月の4つのビューで、<br class="sp-only">予定をぱっと確認。</p>
   </div>
   <div class="ss-wrap reveal stagger-3">
     <div class="ss-track">
@@ -673,7 +687,7 @@
   <div class="container">
     <p class="section-eyebrow reveal">Features</p>
     <h2 class="section-heading reveal stagger-1">主な機能</h2>
-    <p class="section-lead reveal stagger-2">めんどくさいをなくして、やりたいことだけに集中。</p>
+    <p class="section-lead reveal stagger-2">めんどくさいをなくして、<br class="sp-only">やりたいことだけに集中。</p>
     <div class="feat-grid reveal stagger-3">
       <div class="feat-card">
         <div class="feat-emoji">&#x1F4AC;</div>
@@ -724,7 +738,7 @@
   <div class="container">
     <p class="section-eyebrow reveal">Input Examples</p>
     <h2 class="section-heading reveal stagger-1">入力例</h2>
-    <p class="section-lead reveal stagger-2">こう打つだけ。あとはおしらせくんがやってくれる。</p>
+    <p class="section-lead reveal stagger-2">こう打つだけ。<br class="sp-only">あとはおしらせくんがやってくれる。</p>
     <div class="ex-list reveal stagger-3">
       <div class="ex-row">
         <span class="ex-in">明日の夜ミーティング</span>
@@ -764,7 +778,7 @@
 <section class="cta-banner">
   <div class="reveal">
     <h2>まずは使ってみてください</h2>
-    <p>思いついたことを、そのまま打ち込むだけ。</p>
+    <p>思いついたことを、<br class="sp-only">そのまま打ち込むだけ。</p>
     <a href="#">
       <img src="appstore-japan.svg" alt="App Storeからダウンロード">
     </a>
@@ -907,7 +921,7 @@
       '明日の15時に資料作成',
       '来週の火曜日に会食',
       '明後日にゴルフ',
-      '1時間後に薬を飲む',
+      '寝る前に薬を飲む',
       '明日の出勤前にゴミ捨て',
       '毎週土曜日にジム行く',
     ];
