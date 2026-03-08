@@ -384,6 +384,28 @@
     }
     .lightbox-close:hover{background:rgba(255,255,255,.25)}
     .lightbox-close svg{width:16px;height:16px;color:#fff}
+    .lightbox-nav{
+      position:absolute;top:50%;
+      transform:translateY(-50%);
+      width:44px;height:44px;
+      background:rgba(255,255,255,.15);
+      border:none;border-radius:50%;
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      transition:background .2s,transform .2s;
+      z-index:2001;
+    }
+    .lightbox-nav:hover{background:rgba(255,255,255,.3);transform:translateY(-50%) scale(1.1)}
+    .lightbox-nav:active{transform:translateY(-50%) scale(.95)}
+    .lightbox-nav svg{width:20px;height:20px;color:#fff}
+    .lightbox-prev{left:16px}
+    .lightbox-next{right:16px}
+    @media(max-width:768px){
+      .lightbox-nav{width:36px;height:36px}
+      .lightbox-nav svg{width:16px;height:16px}
+      .lightbox-prev{left:10px}
+      .lightbox-next{right:10px}
+    }
 
     /* ---------- FEATURES ---------- */
     .feat-grid{
@@ -838,7 +860,13 @@
   <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
   </button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="前へ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
   <img src="" alt="" id="lightboxImg">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="次へ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
 </div>
 
 <!-- FOOTER -->
@@ -895,11 +923,20 @@
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightboxImg');
     const lbClose = document.getElementById('lightboxClose');
+    const lbPrev = document.getElementById('lightboxPrev');
+    const lbNext = document.getElementById('lightboxNext');
+    const images = Array.from(document.querySelectorAll('.ss-track img'));
+    let currentIdx = 0;
 
-    document.querySelectorAll('.ss-track img').forEach(img => {
+    function show(idx) {
+      currentIdx = (idx + images.length) % images.length;
+      lbImg.src = images[currentIdx].src;
+      lbImg.alt = images[currentIdx].alt;
+    }
+
+    images.forEach((img, i) => {
       img.addEventListener('click', () => {
-        lbImg.src = img.src;
-        lbImg.alt = img.alt;
+        show(i);
         lb.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
@@ -909,9 +946,17 @@
       lb.classList.remove('active');
       document.body.style.overflow = '';
     }
+
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); show(currentIdx - 1); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); show(currentIdx + 1); });
     lbClose.addEventListener('click', close);
     lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(currentIdx - 1);
+      if (e.key === 'ArrowRight') show(currentIdx + 1);
+    });
   })();
 
   // Typewriter
